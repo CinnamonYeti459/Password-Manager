@@ -7,6 +7,9 @@ A secure C# application with an Avalonia-based UI designed to keep your password
 - **Login and Create Account Screens**  
   Start by creating a secure account or logging in with your credentials to access your password database.
 
+- **Breach Detection**  
+  Uses a technique called k-Anonymity: the user’s password is hashed locally, and only the first 5 characters of the hash are sent to the Have I Been Pwned database. This allows checking if the password has been    exposed in a data breach without revealing the full password or full hash, while protecting user privacy.
+
 - **Offline Functionality**  
   All your sensitive data is stored locally, so you don’t need an internet connection to manage your passwords.
 
