@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Password_Manager.ViewModels"
+        x:Class="Password_Manager.Views.LoginActivityWindow"
+        x:DataType="vm:LoginActivityViewModel"
+        Width="1000" Height="400"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Title="Password Manager - Login Activity"
+	    Icon="/Assets/Password Manager.ico"
+        Background="Black">
+
+	
+	<StackPanel Margin="10" Spacing="10">
+		
+		<!-- Title -->
+		<TextBlock Text="Login Activity" FontSize="24" Foreground="White" HorizontalAlignment="Center" />
+
+		<!-- Login Entries Data Grid -->
+		<DataGrid ItemsSource="{Binding LoginActivityEntries}" AutoGenerateColumns="False" Height="200" BorderBrush="White" BorderThickness="1" IsReadOnly="True">
+			
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Location" Binding="{Binding Location}" />
+				<DataGridTextColumn Header="Wi-Fi Provider" Binding="{Binding WiFiProvider}" />
+				<DataGridTextColumn Header="IP Address" Binding="{Binding IPAddress}" />
+				<DataGridTextColumn Header="Date" Binding="{Binding Date}" />
+				<DataGridCheckBoxColumn Header="Success" Binding="{Binding IsSuccessful}" />
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<!-- Back Button -->
+		<Button Content="Back" Click="BackButton_Click" HorizontalAlignment="Right" />
+	</StackPanel>
+</Window>

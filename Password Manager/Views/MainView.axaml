@@ -1,0 +1,70 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Password_Manager.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Password_Manager.Views.MainView"
+             x:DataType="vm:MainViewModel">
+	<Design.DataContext>
+		<vm:MainViewModel />
+	</Design.DataContext>
+
+	<!-- Scrollbar -->
+	<ScrollViewer Margin="20" VerticalScrollBarVisibility="Auto">
+		<StackPanel Spacing="12">
+
+			<Border Margin="5" CornerRadius="10" Background="Navy" Padding="10">
+				<TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Text="Password Manager" Foreground="Black"/> <!-- Title -->
+			</Border>
+
+			<!-- Navigation Bar -->
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="20" Margin="0,4,25,12">
+				
+				<TextBlock Text="Login Activity" Foreground="White" TextDecorations="Underline" Cursor="Hand" FontSize="25" PointerPressed="ActivityText_PointerPressed"/>
+
+				<TextBlock Text="Logout" Foreground="White" TextDecorations="Underline" Cursor="Hand" FontSize="25" PointerPressed="LogoutText_PointerPressed"/>
+			</StackPanel>
+
+			<!-- Password Data Grid -->
+			<DataGrid Margin="0,0,0,20" ItemsSource="{Binding PasswordEntries}" AutoGenerateColumns="False" GridLinesVisibility="All" BorderThickness="1" BorderBrush="Navy" SelectionChanged="DataGrid_SelectionChanged" Name="PasswordsDataGrid" Height="200">
+
+				<!-- Password Grid Columns -->
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Service" Binding="{Binding Service}" IsReadOnly="True"/>
+					<DataGridTextColumn Header="Username" Binding="{Binding Username}" IsReadOnly="True"/>
+					<DataGridTextColumn Header="Password" Binding="{Binding DisplayPassword}" IsReadOnly="True"/>
+					<DataGridCheckBoxColumn Header="Show Password" Binding="{Binding IsPasswordVisible}" />
+				</DataGrid.Columns>
+			</DataGrid>
+
+			<!-- Remove Entry -->
+			<Button Name="RemoveEntryButton" Click="RemoveEntryButton_Click" IsEnabled="False">Remove Selected</Button>
+
+			<!-- Service -->
+			<TextBlock FontWeight="SemiBold" Margin="0,8,0,4">Add Service</TextBlock>
+			<TextBox Watermark="Service" Name="Service" />
+
+			<!-- Username -->
+			<TextBlock FontWeight="SemiBold" Margin="0,8,0,4">Add Username</TextBlock>
+			<TextBox Watermark="Username" Name="Username" />
+
+			<!-- Password -->
+			<TextBlock FontWeight="SemiBold" Margin="0,8,0,4">Add Password</TextBlock>
+			<TextBox Watermark="Password" Name="Password" PasswordChar="*" TextChanged="PasswordBox_TextChanged" />
+			<TextBlock FontWeight="SemiBold" Margin="0,8,0,4" Name="PasswordBreachWarning"></TextBlock>
+
+			<!-- Add Entry -->
+			<Button Name="AddEntryButton" Click="Button_Click">Add</Button>
+
+			<!-- Generate Password -->
+			<TextBlock FontWeight="SemiBold" Margin="0,8,0,4">Generate Password</TextBlock>
+			<TextBox Watermark="Click Generate Password To Generate A Randomized Password..." Name="PasswordGenerated" IsReadOnly="True" />
+			<Button Name="GeneratePasswordButton" Click="Generate_Password_Button_Click">Generate Password</Button>
+
+			<!-- My GitHub -->
+			<TextBlock Text="My GitHub" FontSize="20" Foreground="Navy" Cursor="Hand" TextDecorations="Underline" HorizontalAlignment="Center" Margin="20,20,0,0" PointerPressed="GitHubLink_Click" />
+
+		</StackPanel>
+	</ScrollViewer>
+</UserControl>

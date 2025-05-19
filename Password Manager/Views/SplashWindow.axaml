@@ -1,0 +1,23 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Password_Manager.Views.SplashWindow" 
+        Width="400" Height="300"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        SystemDecorations="None"
+        Background="Black"
+        Icon="/Assets/Password Manager.ico"
+        Title="Password Manager - Loading...">
+
+	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+
+		<!-- Lock Image -->
+		<Image Source="/Assets/Password Manager.png" Width="150" Height="150"/>
+
+		<!-- Loading Text -->
+		<TextBlock Text="Loading..." FontSize="20" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+
+		<!-- Loading bar -->
+		<ProgressBar Width="300" IsIndeterminate="True"/> 
+	</StackPanel>
+</Window>

@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Password_Manager.Views.LoginWindow"
+        Width="400" Height="450"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        SystemDecorations="None"
+        Background="Black"
+        Icon="/Assets/Password Manager.ico"
+        Title="Password Manager">
+
+	<!-- Login Input -->
+	<StackPanel Margin="20" Spacing="10">
+		<TextBlock Text="Please Login" FontSize="18" HorizontalAlignment="Center" Foreground="White"/>
+		<TextBox x:Name="UsernameBox" Watermark="Username"/>
+		<TextBox x:Name="PasswordBox" Watermark="Password" PasswordChar="●"/>
+		<Button Content="Login" Click="OnLoginClicked"/>
+		<TextBlock x:Name="ErrorText" Foreground="Red" IsVisible="False"/>
+
+		<Separator Margin="10"/>
+
+		<TextBlock Text="Or Create New Account" FontSize="18" HorizontalAlignment="Center" Foreground="White" Margin="0,10,0,0"/>
+		<TextBox x:Name="NewUsernameBox" Watermark="New Username"/>
+		<TextBox x:Name="NewPasswordBox" Watermark="New Password" PasswordChar="●"/>
+
+		<!-- Create Account -->
+		<Button Content="Create Account" Click="OnCreateAccountClicked"/>
+		<TextBlock x:Name="CreateAccountStatusText" Foreground="LightGreen" IsVisible="False"/>
+	</StackPanel>
+</Window>
